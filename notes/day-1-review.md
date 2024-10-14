@@ -27,7 +27,7 @@ What are some other ways you might do the same thing?
 We began a project in Visual Studio to create a service. What is meant by the term "Service" in software development?
 
 Our service exposes an *interface* that other applications can use to drive our service (make it do stuff). This is an
-"Application Programming Interfact". How does an API differ from a "User Interface" (UI)? How are they similiar?
+"Application Programming Interface". How does an API differ from a "User Interface" (UI)? How are they similiar?
 
 What are some benefits of exposing a service's interface using the HTTP Protocol?
 
