@@ -19,5 +19,10 @@ if (app.Environment.IsDevelopment())
 app.UseAuthorization();
 
 app.MapControllers();
+// we need a way to say "POST /catalog", run this code.
 
-app.Run();
+app.Run(); // Blocks here - it just sits and listens for HTTP requests.
+
+// I will not explain this now. no matter how much you beg me. I will later.
+
+public partial class Program;
