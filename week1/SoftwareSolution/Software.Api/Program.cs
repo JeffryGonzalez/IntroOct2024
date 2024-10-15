@@ -12,7 +12,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
+    app.UseSwagger(); // makes that page at /swagger/index.html
     app.UseSwaggerUI();
 }
 
@@ -25,4 +25,4 @@ app.Run(); // Blocks here - it just sits and listens for HTTP requests.
 
 // I will not explain this now. no matter how much you beg me. I will later.
 
-public partial class Program;
+public partial class Program; // hey dotnet, when you compile, make it public.
