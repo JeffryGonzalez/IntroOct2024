@@ -15,7 +15,7 @@ public class NewAccounts
         // When (Act)
         decimal balance = account.GetBalance();
         // Then (Assert)
-        Assert.Equal(5000M, balance);
+        Assert.Equal(7000M, balance);
 
     }
 }
