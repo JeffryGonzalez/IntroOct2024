@@ -3,15 +3,20 @@
 
 namespace Banking.Domain;
 
-public class BankAccount
+public class BankAccount(ICalculateBonusesForDeposits calculator)
 {
     private decimal _balance = 7000M;
+    //private ICalculateBonusesForDeposits calculator;
+
+    //public BankAccount(ICalculateBonusesForDeposits calculator)
+    //{
+    //    this.calculator = calculator;
+    //}
+
     public void Deposit(decimal amountToDeposit)
     {
-        var calculator = new BonusCalculator();
+
         decimal bonus = calculator.CalculateBonusForDepositOn(_balance, amountToDeposit);
-
-
 
         _balance += amountToDeposit + bonus;
     }

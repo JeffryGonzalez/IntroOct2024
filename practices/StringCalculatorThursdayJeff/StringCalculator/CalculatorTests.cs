@@ -1,5 +1,7 @@
 ﻿
 
+
+
 namespace StringCalculator;
 public class CalculatorTests
 {
@@ -7,7 +9,7 @@ public class CalculatorTests
 
     public CalculatorTests()
     {
-        calculator = new Calculator();
+        calculator = new Calculator(Substitute.For<ILogAnswers>(), Substitute.For<IWebService>());
     }
     [Fact]
     public void EmptyStringReturnsZero()
@@ -73,4 +75,12 @@ public class CalculatorTests
     }
 
 
+}
+
+public class DummyLogger : ILogAnswers
+{
+    public void LogAnswer(string answer)
+    {
+
+    }
 }

@@ -1,6 +1,7 @@
 ﻿
 
 using Banking.Domain;
+using Banking.Tests.TestDoubles;
 
 namespace Banking.Tests.GoldAccounts;
 public class MakingDeposits
@@ -9,17 +10,17 @@ public class MakingDeposits
     public void GetsBonus()
     {
         // Given
-        var account = new BankAccount();
+        var account = new BankAccount(new StubbedBonusCalculator());
         var openingBalance = account.GetBalance();
         var amountToDeposit = 100M;
 
 
         // when
-        // account.Deposit(amountToDeposit, isGold: true);
+
         account.Deposit(amountToDeposit);
 
         // then
-        var expectedBalance = openingBalance + (amountToDeposit * 1.10M);
+        var expectedBalance = openingBalance + amountToDeposit + 42.23M;
 
         Assert.Equal(expectedBalance, account.GetBalance());
 

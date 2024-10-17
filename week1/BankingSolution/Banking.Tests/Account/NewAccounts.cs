@@ -11,7 +11,7 @@ public class NewAccounts
     {
         // Write the code you wish you had. (WTCYWYH) (JFHCI)
         // Given (Arrange)
-        var account = new BankAccount();
+        var account = new BankAccount(new BonusCalculator());
         // When (Act)
         decimal balance = account.GetBalance();
         // Then (Assert)

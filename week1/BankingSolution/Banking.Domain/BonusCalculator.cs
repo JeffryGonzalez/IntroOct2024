@@ -1,7 +1,7 @@
 ﻿
 namespace Banking.Domain;
 
-public class BonusCalculator
+public class BonusCalculator : ICalculateBonusesForDeposits
 {
 
 
