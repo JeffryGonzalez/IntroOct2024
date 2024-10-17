@@ -8,7 +8,12 @@ public class BankAccount
     private decimal _balance = 7000M;
     public void Deposit(decimal amountToDeposit)
     {
-        _balance += amountToDeposit;
+        var calculator = new BonusCalculator();
+        decimal bonus = calculator.CalculateBonusForDepositOn(_balance, amountToDeposit);
+
+
+
+        _balance += amountToDeposit + bonus;
     }
 
     public decimal GetBalance()
