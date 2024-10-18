@@ -4,7 +4,7 @@ POST {{Software.Api_HostAddress}}/catalog
 Content-Type: application/json
 
 {
-    "title": "Visual Studio Code",
-    "vendor": "Microsoft",
+    "title": "Rider",
+    "vendor": "Jetbrains",
     "isOpenSource": true
 }
