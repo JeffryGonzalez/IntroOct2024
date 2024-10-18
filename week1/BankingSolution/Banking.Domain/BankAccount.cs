@@ -28,7 +28,7 @@ public class BankAccount(ICalculateBonusesForDeposits calculator)
 
     public void Withdraw(decimal amountToWithdraw)
     {
-        if (_balance >= amountToWithdraw)
+        if (HasSufficientFundsForWithrawal(amountToWithdraw))
         {
             _balance -= amountToWithdraw;
         }
@@ -36,6 +36,11 @@ public class BankAccount(ICalculateBonusesForDeposits calculator)
         {
             throw new AccountOverdraftException();
         }
+    }
+
+    private bool HasSufficientFundsForWithrawal(decimal amountToWithdraw)
+    {
+        return _balance >= amountToWithdraw;
     }
 }
 

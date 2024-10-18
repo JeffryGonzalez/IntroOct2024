@@ -34,7 +34,6 @@ http://authority/PATH
 
 POST /catalog
 Content-Type: application/json
-Authorization: Bearer JWT
 
 {
     "title": "Visual Studio Code",
@@ -52,6 +51,10 @@ Content-type: application/json
     "id": "da8aedb5-1ca2-480f-b972-a2746193e230",
     "title": "Visual Studio Code",
     "vendor": "Microsoft",
-    "isOpenSource": true,
-    "addedBy": "jeff"
+    "isOpenSource": true
 }
+
+200-299 This worked.
+300-399 (not used that much for APIs) but often redirects.
+400-499 You (the consumer, the client) did something wrong. It's YOUR fault this didn't work.
+500-599 We screwed up. Blammo. (This is what we want to avoid at all costs.)
