@@ -7,7 +7,9 @@ import { NavigationComponent } from './components/navigation.component';
   standalone: true,
   template: `
     <app-navigation />
-    <main class="container mx-auto"></main>
+    <main class="container mx-auto">
+      <router-outlet />
+    </main>
   `,
   styles: [],
   imports: [RouterOutlet, NavigationComponent],
