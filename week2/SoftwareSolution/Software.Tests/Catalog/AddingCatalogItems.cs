@@ -10,6 +10,9 @@ public class AddingCatalogItems
     [Fact]
     public async Task AddingAnItemToTheCatalogAsync()
     {
+
+
+
         // Given
         // Start the Api
         var host = await AlbaHost.For<Program>();

@@ -4,7 +4,11 @@ POST {{Software.Api_HostAddress}}/catalog
 Content-Type: application/json
 
 {
-    "title": "Rider",
-    "vendor": "Jetbrains",
-    "isOpenSource": true
+    "title": "Bozo",
+    "vendor": "Dirtbag",
+    "isOpenSource": false
 }
+
+###
+
+GET {{Software.Api_HostAddress}}/open-source-software

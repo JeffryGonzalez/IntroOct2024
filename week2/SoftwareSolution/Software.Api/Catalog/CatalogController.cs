@@ -10,6 +10,8 @@ namespace Software.Api.Catalog;
 
 public class CatalogController(IDocumentSession session) : ControllerBase
 {
+
+
     [HttpPost("/catalog")]
     public async Task<ActionResult> AddSoftwareToCatalogAsync(
         [FromBody] CatalogCreateModel request)
