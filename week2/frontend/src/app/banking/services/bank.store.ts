@@ -12,7 +12,7 @@ import { withDevtools } from '@angular-architects/ngrx-toolkit';
 
 export const BankingStore = signalStore(
   withDevtools('banking-store'),
-  withState({ balance: 5229 }),
+  withState({ balance: 0 }),
   withEntities<TransactionRecord>(),
   withMethods((store) => {
     return {

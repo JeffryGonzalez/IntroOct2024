@@ -20,6 +20,7 @@ import {
     <form [formGroup]="form" (ngSubmit)="doTransaction()">
       <input
         name="transaction-amount"
+        (change)="logIt($event)"
         class="input input-bordered"
         type="number"
         formControlName="transactionAmount"
@@ -49,5 +50,9 @@ export class BankingTransactionInputComponent {
       this.transaction.emit(amount);
       this.form.reset();
     }
+  }
+
+  logIt(event: any) {
+    console.log(event);
   }
 }

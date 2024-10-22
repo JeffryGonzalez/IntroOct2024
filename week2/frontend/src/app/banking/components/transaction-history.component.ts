@@ -37,7 +37,7 @@ import { CurrencyPipe, DatePipe } from '@angular/common';
               <span>👇</span>
               }
             </td>
-            <td>{{ tx.amount | currency }}</td>
+            <td class="text-right">{{ tx.amount | currency }}</td>
             <td>{{ tx.newBalance | currency }}</td>
           </tr>
           } @empty {

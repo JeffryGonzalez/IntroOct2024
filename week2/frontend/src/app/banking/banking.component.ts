@@ -38,9 +38,13 @@ import { CurrencyPipe } from '@angular/common';
         <a routerLink="deposit" class="m-8 btn btn-lg btn-success"
           >Make a Deposit</a
         >
+        @if(store.balance() === 0){
+        <p>You got no money!</p>
+        } @else {
         <a routerLink="withdrawal" class="m-8 btn btn-lg btn-success"
           >Make a Withdrawal</a
         >
+        }
       </div>
       <router-outlet />
     </div>

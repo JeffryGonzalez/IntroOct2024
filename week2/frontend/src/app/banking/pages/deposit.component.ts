@@ -2,6 +2,7 @@ import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { BankingStore } from '../services/bank.store';
 import { BankingSuccessNotificationComponent } from '../components/banking-success-notification.component';
 import { BankingTransactionInputComponent } from '../components/banking-transaction-input.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-banking-deposit',
@@ -10,6 +11,7 @@ import { BankingTransactionInputComponent } from '../components/banking-transact
   imports: [
     BankingSuccessNotificationComponent,
     BankingTransactionInputComponent,
+    RouterLink,
   ],
   template: `
     <h1 class="text-2xl font-black">Make a Deposit</h1>
@@ -30,6 +32,8 @@ import { BankingTransactionInputComponent } from '../components/banking-transact
       label="Deposit Amount"
       (transaction)="store.deposit($event)"
     />
+
+    <a routerLink="/banking" class="btn btn-primary">Done Making Deposits</a>
   `,
   styles: ``,
 })
