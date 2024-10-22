@@ -5,7 +5,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [],
-  template: ` <p>Statement Will Go Here</p> `,
+  template: ` <p>Transaction History goes here</p> `,
   styles: ``,
 })
 export class StatementComponent {}
