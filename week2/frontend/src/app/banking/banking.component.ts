@@ -8,6 +8,8 @@ import { TransactionRecord } from './types';
 import { TransactionHistoryComponent } from './components/transaction-history.component';
 import { BankingSuccessNotificationComponent } from './components/banking-success-notification.component';
 import { BankingTransactionInputComponent } from './components/banking-transaction-input.component';
+import { RouterOutlet } from '@angular/router';
+import { BankingNavComponent } from './components/banking-nav.component';
 
 // id, starting balance , type (deposit | withdraw), amount, new balance
 
@@ -19,8 +21,11 @@ import { BankingTransactionInputComponent } from './components/banking-transacti
     TransactionHistoryComponent,
     BankingSuccessNotificationComponent,
     BankingTransactionInputComponent,
+    RouterOutlet,
+    BankingNavComponent,
   ],
   template: `
+    <app-banking-nav />
     <div>
       <p>Your Balance is {{ balance() }}</p>
       @if(isGoldAccount()) {
@@ -41,12 +46,13 @@ import { BankingTransactionInputComponent } from './components/banking-transacti
           label="Deposit"
           (transaction)="deposit($event)"
         />
+
         <app-banking-transaction-input
           label="Withdraw"
           (transaction)="withdraw($event)"
         />
       </div>
-      <app-banking-transaction-history [historyToDisplay]="history()" />
+      <router-outlet />
     </div>
   `,
   styles: ``,
