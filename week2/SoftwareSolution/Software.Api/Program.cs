@@ -10,7 +10,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var connectionString = builder.Configuration.GetConnectionString("catalog") ?? throw new Exception("No Connection String");
-
+builder.Services.AddScoped<BankAccount>();
 builder.Services.AddMarten(cfg =>
 {
     cfg.Connection(connectionString);
@@ -35,3 +35,9 @@ app.Run(); // Blocks here - it just sits and listens for HTTP requests.
 // I will not explain this now. no matter how much you beg me. I will later.
 
 public partial class Program; // hey dotnet, when you compile, make it public.
+
+
+public class BankAccount
+{
+
+}
