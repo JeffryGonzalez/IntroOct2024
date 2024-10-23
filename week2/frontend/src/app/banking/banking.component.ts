@@ -46,4 +46,6 @@ import { BankingStore } from './services/bank.store';
 })
 export class BankingComponent {
   store = inject(BankingStore);
+
+  constructor() {}
 }
