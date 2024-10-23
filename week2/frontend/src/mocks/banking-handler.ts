@@ -13,17 +13,18 @@ const initialState: ApiResponseItem[] = [
     type: 'deposit',
     postedOn: new Date(1729623072771).toISOString(),
   },
-  {
-    ibnTxLsn: '0f44ef39-16d5-41ff-8214-7d9e826669b7',
-    amount: 812.23,
-    type: 'deposit',
-    postedOn: new Date(1729623077419).toISOString(),
-  },
+
   {
     ibnTxLsn: '60358a6d-1c38-49df-ba05-48b77015a28f',
     amount: 15.23,
     type: 'withdrawal',
     postedOn: new Date(1729623085091).toISOString(),
+  },
+  {
+    ibnTxLsn: '0f44ef39-16d5-41ff-8214-7d9e826669b7',
+    amount: 812.23,
+    type: 'deposit',
+    postedOn: new Date(1729623077419).toISOString(),
   },
   {
     ibnTxLsn: '684683ac-bb24-4f15-a35b-75462c50c90c',

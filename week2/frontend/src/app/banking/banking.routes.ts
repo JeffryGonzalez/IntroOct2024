@@ -4,12 +4,13 @@ import { StatementComponent } from './pages/statement.component';
 import { BankingStore } from './services/bank.store';
 import { WithdrawComponent } from './pages/withdraw.component';
 import { DepositComponent } from './pages/deposit.component';
+import { BankDataService } from './services/bank-data.service';
 
 export const BANKING_ROUTES: Routes = [
   {
     path: '', // /banking
     component: BankingComponent,
-    providers: [BankingStore],
+    providers: [BankingStore, BankDataService],
     children: [
       {
         path: 'statement', // banking/statement

@@ -1,18 +1,11 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  signal,
-  computed,
-  inject,
-} from '@angular/core';
-import { TransactionRecord } from './types';
-import { TransactionHistoryComponent } from './components/transaction-history.component';
-import { BankingSuccessNotificationComponent } from './components/banking-success-notification.component';
-import { BankingTransactionInputComponent } from './components/banking-transaction-input.component';
+import { CurrencyPipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { BankingNavComponent } from './components/banking-nav.component';
+import { BankingSuccessNotificationComponent } from './components/banking-success-notification.component';
+import { BankingTransactionInputComponent } from './components/banking-transaction-input.component';
+import { TransactionHistoryComponent } from './components/transaction-history.component';
 import { BankingStore } from './services/bank.store';
-import { CurrencyPipe } from '@angular/common';
 
 // id, starting balance , type (deposit | withdraw), amount, new balance
 
