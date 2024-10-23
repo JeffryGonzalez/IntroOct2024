@@ -22,7 +22,10 @@ export class BankDataService {
     console.log('Created an instance of the BankDataService');
   }
 
-  addDeposit(amount: number): Observable<TransactionRecord> {
+  addDeposit(
+    amount: number,
+    temporaryId: string
+  ): Observable<{ result: Partial<TransactionRecord>; temporaryId: string }> {
     return this.#client
       .post<TransactionApiItem>(
         `http://fake-api.bankohypertheory.com/user/deposits`,
@@ -35,10 +38,11 @@ export class BankDataService {
               id: r.ibnTxLsn,
               amount,
               created: isoToTimeStamp(r.postedOn),
-              newBalance: 99999, // no idea
-              startingBalance: 99999, // no idea
+
+              type: r.type,
             } as TransactionRecord)
-        )
+        ),
+        map((result) => ({ result, temporaryId }))
       );
   }
 
