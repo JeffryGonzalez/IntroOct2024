@@ -1,7 +1,23 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, tap } from 'rxjs';
 import { TransactionRecord, TransactionType } from '../types';
+import { z } from 'zod';
+
+export const BankResponseSchema = z.object({
+  accountNumber: z.string(),
+  statementDate: z.string(),
+  openingBalance: z.number(),
+  transactions: z.array(
+    z.object({
+      ibnTxLsn: z.string(),
+      amount: z.number(),
+      type: z.string(),
+      postedOn: z.string(),
+    })
+  ),
+});
+
 type TransactionApiItem = {
   ibnTxLsn: string;
   amount: number;
@@ -42,6 +58,7 @@ export class BankDataService {
               type: r.type,
             } as TransactionRecord)
         ),
+
         map((result) => ({ result, temporaryId }))
       );
   }
@@ -55,6 +72,13 @@ export class BankDataService {
         }`
       )
       .pipe(
+        tap((r) => {
+          const results = BankResponseSchema.safeParse(r);
+          if (results.error) {
+            console.log('There was an error', results.error);
+            throw new Error('Bad Response from API');
+          }
+        }),
         map((r) => {
           let previousBalance = r.openingBalance;
           return r.transactions

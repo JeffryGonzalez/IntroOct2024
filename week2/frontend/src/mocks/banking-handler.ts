@@ -49,7 +49,7 @@ const handlers = [
       const response = {
         accountNumber: '1234567890',
         statementDate: `${params['year']}-${params['month']}`,
-        openingBalance,
+        balance: openingBalance,
         transactions: initialState,
       };
       return HttpResponse.json(response);
