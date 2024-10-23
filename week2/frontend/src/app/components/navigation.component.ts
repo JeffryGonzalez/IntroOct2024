@@ -19,6 +19,9 @@ import { RouterLink } from '@angular/router';
             <a routerLink="banking">Banking</a>
           </li>
           <li>
+            <a routerLink="software">Software Center</a>
+          </li>
+          <li>
             <a routerLink="demo">Demo</a>
           </li>
         </ul>

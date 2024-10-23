@@ -16,8 +16,18 @@ builder.Services.AddMarten(cfg =>
     cfg.Connection(connectionString);
 }).UseLightweightSessions();
 
+builder.Services.AddCors(b =>
+{
+    b.AddDefaultPolicy(pol =>
+    {
+        pol.AllowAnyOrigin();
+        pol.AllowAnyMethod();
+        pol.AllowAnyHeader(); // consult your local authorities.
+    });
+});
 var app = builder.Build();
 
+app.UseCors();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -30,7 +40,9 @@ app.UseAuthorization();
 app.MapControllers();
 // we need a way to say "POST /catalog", run this code.
 
+
 app.Run(); // Blocks here - it just sits and listens for HTTP requests.
+
 
 // I will not explain this now. no matter how much you beg me. I will later.
 

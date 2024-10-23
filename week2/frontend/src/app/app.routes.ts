@@ -17,6 +17,11 @@ export const routes: Routes = [
       import('./banking/banking.routes').then((r) => r.BANKING_ROUTES),
   },
   {
+    path: 'software',
+    loadChildren: () =>
+      import('./software/software.routes').then((r) => r.SOFTWARE_ROUTES),
+  },
+  {
     path: '**',
     redirectTo: 'home',
   },
