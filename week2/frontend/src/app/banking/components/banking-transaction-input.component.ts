@@ -3,16 +3,16 @@ import {
   ChangeDetectionStrategy,
   input,
   output,
-} from '@angular/core';
+} from "@angular/core";
 import {
   FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
-} from '@angular/forms';
+} from "@angular/forms";
 
 @Component({
-  selector: 'app-banking-transaction-input',
+  selector: "app-banking-transaction-input",
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ReactiveFormsModule],
@@ -27,9 +27,12 @@ import {
       /><button type="submit" class="btn btn-primary">
         <label for="transaction-amount"> {{ label() }} </label>
       </button>
-      @if(form.invalid && (form.controls.transactionAmount.dirty ||
-      form.controls.transactionAmount.touched)) {
-      <span role="alert" class="alert alert-error">Errors</span>
+      @if (
+        form.invalid &&
+        (form.controls.transactionAmount.dirty ||
+          form.controls.transactionAmount.touched)
+      ) {
+        <span role="alert" class="alert alert-error">Errors</span>
       }
     </form>
   `,
