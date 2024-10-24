@@ -109,6 +109,7 @@ export class CreateComponent {
       this.store.addItem(itemToAdd);
       this.form.reset();
     } else {
+      // go through all the controls and mark them as touched so that validation is triggered.
       Object.keys(this.form.controls).forEach((field) => {
         const control = this.form.get(field)!;
         control.markAsTouched({ onlySelf: true });

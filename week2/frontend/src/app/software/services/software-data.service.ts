@@ -11,4 +11,8 @@ export class SoftwareDataService {
   addItem(item: SoftwareItemCreateModel): Observable<SoftwareItemModel> {
     return this.#client.post<SoftwareItemModel>(this.#apiUrl, item);
   }
+
+  getCatalog(): Observable<SoftwareItemModel[]> {
+    return this.#client.get<SoftwareItemModel[]>(this.#apiUrl);
+  }
 }
