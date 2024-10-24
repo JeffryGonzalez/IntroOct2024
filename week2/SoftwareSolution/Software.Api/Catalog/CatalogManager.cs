@@ -49,4 +49,19 @@ public class CatalogManager(IDocumentSession session, ILogger<CatalogManager> lo
         logger.LogInformation("Ending  the request to get the data from the database");
         return data;
     }
+
+    public async Task<CatalogResponseModel?> GetByIdAsync(Guid id)
+    {
+        var data = await session.Query<CatalogEntity>()
+            .Where(i => i.Id == id)
+            .Select(i => new CatalogResponseModel
+            {
+                Id = i.Id,
+                IsOpenSource = i.IsOpenSource,
+                Title = i.Title,
+                Vendor = i.Vendor,
+            }).SingleOrDefaultAsync();
+
+        return data;
+    }
 }

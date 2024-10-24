@@ -50,12 +50,11 @@ import { JsonPipe } from '@angular/common';
           <div class="label">
             <span class="label-text">Vendor</span>
           </div>
-          <input
-            type="text"
-            placeholder="Put the name of the vendor here"
-            formControlName="vendor"
-            class="input input-bordered w-full max-w-xs"
-          />
+          <select formControlName="vendor" class="input">
+            @for(v of store.vendors(); track v.id) {
+            <option [value]="v.id">{{ v.name }}</option>
+            }
+          </select>
           <div class="label">
             <span class="label-text-alt">The vendor's name.</span>
           </div>
@@ -88,13 +87,10 @@ export class CreateComponent {
         Validators.minLength(3),
         Validators.maxLength(30),
       ],
+      asyncValidators: [], // GET /users?email=jeff@hypertheory.com
     }),
     vendor: new FormControl<string>('', {
-      validators: [
-        Validators.required,
-        Validators.minLength(5),
-        Validators.maxLength(30),
-      ],
+      validators: [],
       nonNullable: true,
     }),
     isOpenSource: new FormControl<boolean>(false, {
