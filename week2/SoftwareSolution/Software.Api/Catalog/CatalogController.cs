@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Marten;
+using Microsoft.AspNetCore.Mvc;
+using Software.Api.Vendors;
 
 namespace Software.Api.Catalog;
 
-public class CatalogController(CatalogManager catalogManager) : ControllerBase
+public class CatalogController(CatalogManager catalogManager, IDocumentSession session) : ControllerBase
 {
 
     [HttpGet("/catalog/{id:guid}")]
@@ -31,19 +33,26 @@ public class CatalogController(CatalogManager catalogManager) : ControllerBase
         return Ok(response);
     }
 
-    [HttpPost("/catalog")]
+    [HttpPost("/vendors/{vendorId:guid}/catalog")]
     public async Task<ActionResult> AddSoftwareToCatalogAsync(
+        [FromRoute] Guid vendorId,
         [FromBody] CatalogCreateModel request)
     {
-        // make sure that the vendor doesn't already exist
-
         if (!ModelState.IsValid)
         {
             return BadRequest(ModelState); // 400
         }
+        // lookup to make sure that that id for the vendor is still in the database.
+        //  - if it doesn't, 404.
+        var vendorIsThere = await session.Query<VendorEntity>().AnyAsync(v => v.Id == vendorId);
+        if (!vendorIsThere)
+        {
+            return NotFound();
+        }
 
 
-        CatalogResponseModel response = await catalogManager.AddSoftwareToCatalogAsync(request);
+
+        CatalogResponseModel response = await catalogManager.AddSoftwareToCatalogAsync(request, vendorId);
 
 
         return Ok(response);

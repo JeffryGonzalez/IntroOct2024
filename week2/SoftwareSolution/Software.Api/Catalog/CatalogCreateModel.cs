@@ -13,7 +13,6 @@ public record CatalogCreateModel
     [Required, MinLength(3), MaxLength(30)]
     public string Title { get; set; } = string.Empty;
 
-    public string Vendor { get; set; } = string.Empty;
     [Required]
     public bool IsOpenSource { get; set; }
 }

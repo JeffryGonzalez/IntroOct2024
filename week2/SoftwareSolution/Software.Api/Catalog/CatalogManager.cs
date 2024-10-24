@@ -1,20 +1,26 @@
 ﻿
 using Marten;
+using Software.Api.Vendors;
 
 namespace Software.Api.Catalog;
 
 public class CatalogManager(IDocumentSession session, ILogger<CatalogManager> logger)
 {
-    public async Task<CatalogResponseModel> AddSoftwareToCatalogAsync(CatalogCreateModel request)
+    public async Task<CatalogResponseModel> AddSoftwareToCatalogAsync(CatalogCreateModel request, Guid vendorId)
     {
-        await Task.Delay(new Random().Next(1000, 3000));
+
+        var vendor = await session.Query<VendorEntity>()
+            .Where(v => v.Id == vendorId)
+            .Select(v => new VendorResponseModel { Id = v.Id, Name = v.Name })
+            .SingleAsync(); // talk about this in a second
 
         var response = new CatalogResponseModel()
         {
             Id = Guid.NewGuid(),
             IsOpenSource = request.IsOpenSource,
             Title = request.Title,
-            Vendor = request.Vendor,
+            VendorId = vendorId,
+            EmbeddedVendor = vendor,
         };
 
         var thingToSave = new CatalogEntity()
@@ -22,7 +28,7 @@ public class CatalogManager(IDocumentSession session, ILogger<CatalogManager> lo
             Id = response.Id,
             IsOpenSource = response.IsOpenSource,
             Title = response.Title,
-            Vendor = response.Vendor,
+            Vendor = vendorId,
 
         };
         session.Store(thingToSave);
@@ -42,7 +48,7 @@ public class CatalogManager(IDocumentSession session, ILogger<CatalogManager> lo
                 Id = i.Id,
                 IsOpenSource = i.IsOpenSource,
                 Title = i.Title,
-                Vendor = i.Vendor,
+                VendorId = i.Vendor,
             })
             .ToListAsync(token);
 
@@ -59,7 +65,7 @@ public class CatalogManager(IDocumentSession session, ILogger<CatalogManager> lo
                 Id = i.Id,
                 IsOpenSource = i.IsOpenSource,
                 Title = i.Title,
-                Vendor = i.Vendor,
+                VendorId = i.Vendor,
             }).SingleOrDefaultAsync();
 
         return data;

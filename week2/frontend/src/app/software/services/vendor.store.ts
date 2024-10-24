@@ -1,3 +1,4 @@
+import { withDevtools } from '@angular-architects/ngrx-toolkit';
 import { HttpClient } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { patchState, signalStore, withHooks, withMethods } from '@ngrx/signals';
@@ -7,6 +8,7 @@ import { pipe, switchMap, tap } from 'rxjs';
 
 export const VendorStore = signalStore(
   withEntities<VendorItem>(),
+  withDevtools('vendors'),
   withMethods((store) => {
     const http = inject(HttpClient);
     return {
