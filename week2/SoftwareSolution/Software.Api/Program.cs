@@ -1,4 +1,5 @@
 using Marten;
+using Software.Api.Catalog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,8 +14,9 @@ var connectionString = builder.Configuration.GetConnectionString("catalog") ?? t
 builder.Services.AddScoped<BankAccount>();
 builder.Services.AddMarten(cfg =>
 {
-    cfg.Connection(connectionString);
+    cfg.Connection(connectionString); // IDocumentSession
 }).UseLightweightSessions();
+builder.Services.AddScoped<CatalogManager>();
 
 builder.Services.AddCors(b =>
 {
