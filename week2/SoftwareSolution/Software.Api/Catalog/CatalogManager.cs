@@ -12,7 +12,7 @@ public class CatalogManager(IDocumentSession session, ILogger<CatalogManager> lo
         var vendor = await session.Query<VendorEntity>()
             .Where(v => v.Id == vendorId)
             .Select(v => new VendorResponseModel { Id = v.Id, Name = v.Name })
-            .SingleAsync(); // talk about this in a second
+            .SingleAsync(); // talk about this in a second poor person's transaction
 
         var response = new CatalogResponseModel()
         {

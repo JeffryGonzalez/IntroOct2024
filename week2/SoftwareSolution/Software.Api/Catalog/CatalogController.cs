@@ -44,6 +44,7 @@ public class CatalogController(CatalogManager catalogManager, IDocumentSession s
         }
         // lookup to make sure that that id for the vendor is still in the database.
         //  - if it doesn't, 404.
+        // use a transaction to make 100% "ACID" (serialiable, whatever)
         var vendorIsThere = await session.Query<VendorEntity>().AnyAsync(v => v.Id == vendorId);
         if (!vendorIsThere)
         {
