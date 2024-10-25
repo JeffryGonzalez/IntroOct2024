@@ -1,5 +1,11 @@
 services:
 
+  shipping:
+    image: jeffrygonzalez/shipping-api-oct-2024:v1.0
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    ports:
+      - 8080:8080
   db:
     image: postgres:16.2-bullseye
     restart: always

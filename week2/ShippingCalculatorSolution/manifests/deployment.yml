@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shipping-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: shipping-api
+  template:
+    metadata:
+      labels:
+        app: shipping-api
+    spec:
+      containers:
+      - name: shipping-api
+        image: jeffrygonzalez/shipping-api-oct-2024:v1.0
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "1000m"
+          requests:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080

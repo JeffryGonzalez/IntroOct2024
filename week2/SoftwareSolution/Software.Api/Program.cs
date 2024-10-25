@@ -18,6 +18,7 @@ builder.Services.AddMarten(cfg =>
 }).UseLightweightSessions();
 builder.Services.AddScoped<CatalogManager>();
 
+
 builder.Services.AddCors(b =>
 {
     b.AddDefaultPolicy(pol =>

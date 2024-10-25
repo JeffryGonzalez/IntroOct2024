@@ -7,6 +7,7 @@ namespace Software.Api.Catalog;
 public class CatalogController(CatalogManager catalogManager, IDocumentSession session) : ControllerBase
 {
 
+
     [HttpGet("/catalog/{id:guid}")]
     public async Task<ActionResult> GetCatalogItemById(
         [FromRoute]

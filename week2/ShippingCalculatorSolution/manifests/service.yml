@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: shipping-api-service
+spec:
+  selector:
+    app: shipping-api
+  ports:
+  - port: 1337
+    targetPort: 8080
